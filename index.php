@@ -2,9 +2,13 @@
 
 require_once "./vendor/autoload.php";
 
-define('HOST', '');
-define('USER', '');
+//conexão com o banco de dados
+define('HOST', 'localhost');
+define('USER', 'root');
 define('PASS', '');
-define('DATABASE', '');
+define('DATABASE', 'gestao-colaboradores');
 
-$app = new \App\Bootstrap();
+//caso seja local e não tem um dominio colocar a barra e o nome da pasta caso ao contrario deixar vazio
+define('BASEPATH', '/teste-mateus');
+
+(new \App\Bootstrap());

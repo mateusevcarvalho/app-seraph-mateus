@@ -10,9 +10,42 @@ class ColaboradoresController extends Controller
 {
     public function index()
     {
-        $colaboradores = new Colaboradores();
-        $this->view->colaboradores = $colaboradores->readAll();
+        $colaborador = new Colaboradores();
+        $colaboradores = $colaborador->all();
+        $this->render('colaboradores/listar', compact('colaboradores', 'scripts'));
+    }
 
-        $this->render('colaboradores/listar');
+    public function create()
+    {
+        if ($_POST) {
+            $colaborador = new Colaboradores();
+            $colaborador = $colaborador->create($_POST);
+            if ($colaborador) {
+                echo json_encode(['success', 'Cadastro realizado com sucesso!']);
+            } else {
+                echo json_encode(['error', 'Falha ao cadastrar colaborador!']);
+            }
+        } else {
+            $scripts = ['colaboradores'];
+            $this->render('colaboradores/cadastrar', compact('scripts'));
+        }
+    }
+
+    public function update()
+    {
+        $id = $this->segmentUrl(3);
+        $colaborador = new Colaboradores();
+        if ($_POST) {
+            $update = $colaborador->update($_POST, $id);
+            if ($update) {
+                echo json_encode(['success', 'Cadastro atualizado com sucesso!']);
+            } else {
+                echo json_encode(['error', 'Falha ao editar colaborador!']);
+            }
+        } else {
+            $colaborador = $colaborador->find($id);
+            $scripts = ['colaboradores'];
+            $this->render('colaboradores/editar', compact('scripts', 'colaborador'));
+        }
     }
 }

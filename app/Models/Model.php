@@ -13,16 +13,32 @@ abstract class Model
 
     private $connection = null;
 
-    public function readAll()
+    public function all()
     {
         $sql = "SELECT * FROM {$this->table}";
         $conn = $this->connect();
         $read = $conn->prepare($sql);
-        $read->setFetchMode(\PDOException::FETCH_ASSOC);
+        $read->setFetchMode(\PDO::FETCH_ASSOC);
 
         try {
             $read->execute();
             return $read->fetchAll();
+        } catch (\PDOException $e) {
+            echo "Falha na busca: " . $e->getMessage();
+            return null;
+        }
+    }
+
+    public function find($id)
+    {
+        $sql = "SELECT * FROM {$this->table} WHERE id = {$id}";
+        $conn = $this->connect();
+        $read = $conn->prepare($sql);
+        $read->setFetchMode(\PDO::FETCH_OBJ);
+
+        try {
+            $read->execute();
+            return $read->fetchObject();
         } catch (\PDOException $e) {
             echo "Falha na busca: " . $e->getMessage();
             return null;
@@ -41,6 +57,28 @@ abstract class Model
         } catch (\PDOException $e) {
             echo "Falha na busca: " . $e->getMessage();
             return null;
+        }
+    }
+
+
+    public function update(array $dados, $id)
+    {
+        foreach ($dados as $key => $value) {
+            $places[] = $key . ' = :' . $key;
+        };
+
+        $places = implode(', ', $places);
+        $update = "UPDATE {$this->table} SET {$places} WHERE  id = {$id}";
+
+        $conn = $this->connect();
+        $update = $conn->prepare($update);
+
+        try {
+            $update->execute($dados);
+            return true;
+        } catch (\PDOException $e) {
+            echo "Falha ao inserir na tabela: " . $e->getMessage();
+            return false;
         }
     }
 
