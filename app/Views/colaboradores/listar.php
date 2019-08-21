@@ -17,7 +17,7 @@
                 <thead>
                 <tr>
                     <th>Nome</th>
-                    <th>Data Nascimento</th>
+                    <th>Idade</th>
                     <th>Celular</th>
                     <th>Email</th>
                     <th></th>
@@ -27,7 +27,7 @@
                 <?php foreach ($colaboradores as $colaborador) { ?>
                     <tr>
                         <td><?= $colaborador['nome'] ?></td>
-                        <td><?= $colaborador['data_nascimento'] ?></td>
+                        <td><?= calculo_idade($colaborador['data_nascimento']) ?></td>
                         <td><?= $colaborador['celular'] ?></td>
                         <td><?= $colaborador['email'] ?></td>
                         <td>

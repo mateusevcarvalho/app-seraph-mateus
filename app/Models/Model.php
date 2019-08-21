@@ -10,7 +10,6 @@ abstract class Model
     private $dbsa = DATABASE;
 
     protected $table = null;
-
     private $connection = null;
 
     public function all()
@@ -31,14 +30,33 @@ abstract class Model
 
     public function find($id)
     {
-        $sql = "SELECT * FROM {$this->table} WHERE id = {$id}";
+        if ($id) {
+            $sql = "SELECT * FROM {$this->table} WHERE id = {$id}";
+            $conn = $this->connect();
+            $read = $conn->prepare($sql);
+            $read->setFetchMode(\PDO::FETCH_OBJ);
+
+            try {
+                $read->execute();
+                return $read->fetchObject();
+            } catch (\PDOException $e) {
+                echo "Falha na busca: " . $e->getMessage();
+                return null;
+            }
+        }
+        return false;
+    }
+
+    public function where($sql)
+    {
         $conn = $this->connect();
+        $sql = "SELECT * FROM {$this->table} WHERE " . $sql;
         $read = $conn->prepare($sql);
-        $read->setFetchMode(\PDO::FETCH_OBJ);
+        $read->setFetchMode(\PDO::FETCH_ASSOC);
 
         try {
             $read->execute();
-            return $read->fetchObject();
+            return $read->fetchAll();
         } catch (\PDOException $e) {
             echo "Falha na busca: " . $e->getMessage();
             return null;
@@ -49,7 +67,7 @@ abstract class Model
     {
         $conn = $this->connect();
         $read = $conn->prepare($sql);
-        $read->setFetchMode(\PDOException::FETCH_ASSOC);
+        $read->setFetchMode(\PDO::FETCH_ASSOC);
 
         try {
             $read->execute();
@@ -57,6 +75,37 @@ abstract class Model
         } catch (\PDOException $e) {
             echo "Falha na busca: " . $e->getMessage();
             return null;
+        }
+    }
+
+
+    public function deleteCustom($termos)
+    {
+        $delete = "DELETE FROM {$this->table} WHERE  {$termos}";
+        $conn = $this->connect();
+        $delete = $conn->prepare($delete);
+
+        try {
+            $delete->execute();
+            return true;
+        } catch (\PDOException $e) {
+            echo "Falha ao apagar o registro: " . $e->getMessage();
+            return false;
+        }
+    }
+
+    public function delete($id)
+    {
+        $delete = "DELETE FROM {$this->table} WHERE  id = {$id}";
+        $conn = $this->connect();
+        $delete = $conn->prepare($delete);
+
+        try {
+            $delete->execute();
+            return true;
+        } catch (\PDOException $e) {
+            echo "Falha ao apagar o registro: " . $e->getMessage();
+            return false;
         }
     }
 

@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="http://<?= $_SERVER['SERVER_NAME'] . BASEPATH ?>/public/plugins/toastr/toastr.css">
     <link rel="stylesheet" href="http://<?= $_SERVER['SERVER_NAME'] . BASEPATH ?>/public/plugins/icofont/icofont.min.css">
+    <link rel="stylesheet" href="http://<?= $_SERVER['SERVER_NAME'] . BASEPATH ?>/public/plugins/jQuery-tagEditor-master/jquery.tag-editor.css">
 </head>
 <body class="d-flex flex-column h-100" style="background-color: #e3e3e3 !important;">
 
@@ -53,6 +54,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
 <script src="http://<?= $_SERVER['SERVER_NAME'] . BASEPATH ?>/public/js/jquery.form.min.js"></script>
 <script src="http://<?= $_SERVER['SERVER_NAME'] . BASEPATH ?>/public/plugins/toastr/toastr.min.js"></script>
+<script src="http://<?= $_SERVER['SERVER_NAME'] . BASEPATH ?>/public/plugins/jQuery-tagEditor-master/jquery.caret.min.js"></script>
+<script src="http://<?= $_SERVER['SERVER_NAME'] . BASEPATH ?>/public/plugins/jQuery-tagEditor-master/jquery.tag-editor.js"></script>
 <script src="http://<?= $_SERVER['SERVER_NAME'] . BASEPATH ?>/public/js/scripts.js"></script>
 
 <?php foreach ($layoutRender['scripts'] as $script) { ?>

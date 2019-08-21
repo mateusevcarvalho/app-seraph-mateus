@@ -44,12 +44,19 @@ var colaboradoresJs = (function () {
                     }
                 }
             });
+        });
+    }
+
+    function tags() {
+        $("#competencias").tagEditor({
+            placeholder: 'Digite e precione enter para adicionar a competência'
         })
     }
 
     function page() {
         cadastro();
         editar();
+        tags();
     }
 
     function __init() {
