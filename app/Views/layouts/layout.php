@@ -32,7 +32,7 @@
                 </li>
             </ul>
             <span class="navbar-text"><?= $_SESSION['login'] ?></span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <a href="<?php BASEPATH ?>/conta/logout">Logout</a>
+            <a href="<?= BASEPATH ?>/conta/logout">Logout</a>
         </div>
     </nav>
 </header>
