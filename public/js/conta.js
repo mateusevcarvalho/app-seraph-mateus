@@ -18,6 +18,8 @@ var Conta = (function () {
                             load('close');
                             location.href = buildUrl('');
                         }, 1500);
+                    } else {
+                        load('close');
                     }
                 }
             });
@@ -41,6 +43,8 @@ var Conta = (function () {
                             load('close');
                             location.href = buildUrl('/conta', 'login');
                         }, 1500);
+                    } else {
+                        load('close');
                     }
                 }
             });
