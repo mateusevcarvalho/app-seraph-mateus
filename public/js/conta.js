@@ -9,13 +9,13 @@ var Conta = (function () {
                 type: 'POST',
                 dataType: 'json',
                 beforeSubmit: function () {
-                    //openLoad();
+                    load('open');
                 },
                 success: function (response) {
-                    //closeLoad();
                     toastr[response[0]](response[1]);
                     if (response[0] === 'success') {
                         setTimeout(function () {
+                            load('close');
                             location.href = buildUrl('');
                         }, 1500);
                     }
@@ -32,13 +32,13 @@ var Conta = (function () {
                 type: 'POST',
                 dataType: 'json',
                 beforeSubmit: function () {
-                    //openLoad();
+                    load('open');
                 },
                 success: function (response) {
-                    //closeLoad();
                     toastr[response[0]](response[1]);
                     if (response[0] === 'success') {
                         setTimeout(function () {
+                            load('close');
                             location.href = buildUrl('/conta', 'login');
                         }, 1500);
                     }

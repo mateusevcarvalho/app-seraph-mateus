@@ -42,7 +42,7 @@
             <div class="form-group col-sm-4">
                 <label>Cep:</label>
                 <input name="cep" type="text" class="form-control" data-mask="00000-000"
-                       placeholder="_____-___" reverse="true" required>
+                       placeholder="_____-___" reverse="true" id="cep" required>
             </div>
 
             <div class="form-group col-sm-4">

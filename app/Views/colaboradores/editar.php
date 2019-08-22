@@ -44,7 +44,7 @@
 
             <div class="form-group col-sm-4">
                 <label>Cep: <span class="text-danger">*</span></label>
-                <input name="cep" type="text" class="form-control" data-mask="00000-000"
+                <input name="cep" type="text" class="form-control" data-mask="00000-000" id="cep"
                        value="<?= $colaborador->cep ?>" placeholder="_____-___" reverse="true" required>
             </div>
 

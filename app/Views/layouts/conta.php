@@ -74,6 +74,18 @@
 
 <input type="hidden" name="baseUrl" value="<?= BASEPATH ?>"/>
 
+<div class="modal fade bd-example-modal-sm" id="modal-load" tabindex="-1" role="dialog"
+     aria-labelledby="mySmallModalLabel" data-backdrop="static" aria-hidden="true"
+     style="background-color: rgba(255, 255, 255, 0.7) !important;">
+    <div class="modal-dialog modal-dialog-centered" style="width: 256px !important;">
+        <div class="modal-content" style="background-color: transparent !important;">
+            <div class="modal-body" style="padding: 0 !important;">
+                <img src="<?= BASEPATH ?>/public/img/Eclipse-1s-200px.gif"/>
+            </div>
+        </div>
+    </div>
+</div>
+
 <script src="http://<?= $_SERVER['SERVER_NAME'] . BASEPATH ?>/public/js/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
