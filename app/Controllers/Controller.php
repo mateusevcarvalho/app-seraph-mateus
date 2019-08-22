@@ -22,6 +22,13 @@ class Controller
         }
     }
 
+    public function isAuthenticate()
+    {
+        if (!isset($_SESSION['login'])) {
+            $this->redirect('conta/login');
+        }
+    }
+
     public function redirect($path)
     {
         $base = "http://" . $_SERVER['SERVER_NAME'] . BASEPATH . '/';

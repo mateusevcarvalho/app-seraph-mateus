@@ -27,12 +27,23 @@
                 <?php foreach ($colaboradores as $colaborador) { ?>
                     <tr>
                         <td><?= $colaborador['nome'] ?></td>
-                        <td><?= calculo_idade($colaborador['data_nascimento']) ?></td>
+                        <td><?= calculo_idade($colaborador['data_nascimento']) ?> anos</td>
                         <td><?= $colaborador['celular'] ?></td>
                         <td><?= $colaborador['email'] ?></td>
                         <td>
-                            <a href="<?= BASEPATH ?>/colaboradores/editar/<?= $colaborador['id'] ?>"
+                            <a href="<?= BASEPATH ?>/colaboradores/detalhes/<?= $colaborador['id'] ?>" title="Detalhes"
+                               class="btn btn-sm btn-secondary"><i class="icofont-file-alt"></i></a>
+
+                            <a href="<?= BASEPATH ?>/colaboradores/editar/<?= $colaborador['id'] ?>" title="Editar"
                                class="btn btn-sm btn-info"><i class="icofont-edit"></i></a>
+
+                            <a href="<?= BASEPATH ?>/colaboradores/imprimir/<?= $colaborador['id'] ?>" target="_blank"
+                               title="Exportar PDF" class="btn btn-sm btn-warning"><i class="icofont-print"></i></a>
+
+                            <button type="button" class="btn btn-sm btn-danger deletar" title="Apagar"
+                                    data-id="<?= $colaborador['id'] ?>" data-nome="<?= $colaborador['nome'] ?>">
+                                <i class="icofont-trash"></i>
+                            </button>
                         </td>
                     </tr>
                 <?php } ?>
@@ -42,6 +53,32 @@
         </div>
 
     </div>
+</div>
+
+<!-- Modal deletar -->
+<div class="modal fade" id="modalDeletar" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+    <form class="modal-dialog" role="document" id="form-deletar">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Confirmar</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Tem certeza que deseja deletar o colaborador: <span class="text-danger" id="body-modal"></span> ?
+                <input type="hidden" name="id" id="id-delete" value="">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                    <i class="icofont-close"></i> Fechar
+                </button>
+                <button type="submit" class="btn btn-danger">
+                    <i class="icofont-trash"></i> Apagar
+                </button>
+            </div>
+        </div>
+    </form>
 </div>
 
 

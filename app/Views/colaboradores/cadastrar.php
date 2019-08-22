@@ -76,12 +76,17 @@
             </div>
 
             <div class="col-sm-12 mb-3 mt-2">
-                <h6>Outros Dados:</h6>
+                <h6>Competências:</h6>
             </div>
 
             <div class="col-sm-12">
-                <label>Competências: <span class="text-danger">*</span></label>
-                <input type="text" name="competencias" id="competencias" class="form-control" required>
+                <label>Comportamentais: <span class="text-danger">*</span></label>
+                <input type="text" name="comportamentais" class="form-control tags-competencia" required>
+            </div>
+
+            <div class="col-sm-12 mt-3">
+                <label>Tecnicas: <span class="text-danger">*</span></label>
+                <input type="text" name="tecnicas" class="form-control tags-competencia" required>
             </div>
 
             <div class="col-sm-12">
